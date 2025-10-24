@@ -143,7 +143,9 @@ int main(int argc, char **argv) {
             }
 
         } else if ((file_stat.st_mode & S_IFMT) == S_IFREG) {
-        }
+            printf("NAME    TYPE    UID    SIZE    GID\n");
+            printf("----------------------------------\n");
+            printf("%s     %u       %u    %ld     %u\n", arg, file_stat.st_mode, file_stat.st_uid, file_stat.st_size, file_stat.st_gid); }
 
         printf("\n");
     }
