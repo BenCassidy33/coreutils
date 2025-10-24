@@ -61,8 +61,18 @@ int main(int argc, char **argv) {
     char *arg;
     FILE *file;
 
+    char **args = argv;
+
+    if (argc == 1) {
+        args = malloc(2 * sizeof(char *) + 1);
+        args[0] = argv[0];
+        args[1] = ".";
+        argc += 1;
+    }
+
+
     for (int i = 1; i < argc; i++) {
-        arg = argv[i];
+        arg = args[i];
 
         struct stat file_stat;
         lstat(arg, &file_stat);
